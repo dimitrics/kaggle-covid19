@@ -10,7 +10,7 @@ library(gridExtra)
 options(repr.plot.width = 14, repr.plot.height = 8)
 
 #Load data:
-dat0 = read.csv('C:/Users/dtziotis002/Documents/PROJECTS/Coronavirus/data/novel-corona-virus-2019-dataset/COVID19_line_list_data.csv', header = T, sep = ',')
+dat0 = read.csv('~/Documents/GitHub/kaggle-covid19/COVID19_line_list_data.csv', header = T, sep = ',')
 names(dat0)
 
 
@@ -49,7 +49,7 @@ dat1$days_before_hosp = as.numeric(as.Date(dat1$hosp_visit_date, format="%m/%d/%
 dat1$days_before_hosp[dat1$days_before_hosp < 0] = NA
 
 # Loading custom functions used in the analysis:
-source('~/PROJECTS/Coronavirus/covid19-lib.r')
+source('~/Documents/GitHub/kaggle-covid19/covid19-lib.r')
 
 
 #----------------------------------------------------------------------------------
