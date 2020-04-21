@@ -25,12 +25,6 @@ dat1$y = as.factor(dat1$y)
 
 table(dat1$y)
 
-# Plot missing values:
-mice_plot <- aggr(dat1, col=c('green','red'),
-                  numbers=TRUE, sortVars=TRUE,
-                  labels=names(dat1), cex.axis=.7,
-                  gap=3, ylab=c("Missing data","Pattern"))
-
 
 cat("Percentage of NAs in hosp_visit_date: ", sum(is.na(dat1$hosp_visit_date))/nrow(dat1), "\n")
 cat("Percentage of NAs in symptom_onset: ", sum(is.na(dat1$symptom_onset))/nrow(dat1), "\n")
@@ -47,6 +41,12 @@ dat1$symptom_onset = as.Date(dat1$symptom_onset, format="%m/%d/%y")
 #Create onset time in days:
 dat1$days_before_hosp = as.numeric(as.Date(dat1$hosp_visit_date, format="%m/%d/%y") - as.Date(dat1$symptom_onset, format="%m/%d/%y"))
 dat1$days_before_hosp[dat1$days_before_hosp < 0] = NA
+
+# Plot missing values:
+mice_plot <- aggr(dat1, col=c('green','red'),
+                  numbers=TRUE, sortVars=TRUE,
+                  labels=names(dat1), cex.axis=.5,
+                  gap=3, ylab=c("Missing data","Pattern"))
 
 # Loading custom functions used in the analysis:
 source('~/Documents/GitHub/kaggle-covid19/covid19-lib.r')
