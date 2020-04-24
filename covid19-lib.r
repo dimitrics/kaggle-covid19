@@ -52,7 +52,7 @@ glm.plot <- function(gfit1, alpha = 0.05, logodds_str = "(exp(beta_i)-1)*100", p
   pvals = coef(summary(gfit1))[,4] #get p-vaues
   
   #Get significant coefficients and corresponding log-odds:
-  results = glm.transform(gfit1, stdout = stdout)
+  results = glm.transform(gfit1, stdout = stdout, alpha = alpha)
   
   #using the formula: (odds_ratio - 1)*100
   if(plot){
@@ -131,7 +131,7 @@ bagged_glm <- function(dat, gfit, type = c("glm", "lm"), family = c("binomial", 
     }
     
     #Store model diagnostics:
-    res_bag = karma.glm_diagnose(gfit_list[[i]], alpha = alpha, stdout = F, plot = F)
+    res_bag = glm.transform(gfit_list[[i]], alpha = alpha, stdout = F)
     res_list[[i]] = res_bag
     
     #Store model coefficients:
