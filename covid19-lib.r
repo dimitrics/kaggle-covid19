@@ -11,7 +11,7 @@ glm.transform <- function(gfit1, alpha = 0.05, logodds_str = "(exp(beta_i)-1)*10
   results$beta_i = coefficients(gfit1)
   
   if(ci == T){
-    ci_df = confint(gfit1, level = 1-alpha, )
+    ci_df = confint(gfit1, level = 1-alpha, )   #k=3; (exp(confint(gfit1, level = 1-alpha))-1)[k,]*100
     results = cbind(results, ci_df)
   }
   
